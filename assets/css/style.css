@@ -1197,3 +1197,54 @@ p { margin-bottom: 1rem; }
 }
 .joined-cards .map-wrap, .joined-cards .office-card { border-radius: 0; box-shadow: none; }
 @media (max-width: 991.98px) { .joined-cards .office-card { padding: 28px 24px 22px; } }
+
+/* ---------- Umrah Journey: language switcher + translated text ---------- */
+.lang-switch {
+  position: relative; display: inline-flex; align-items: center; margin-top: 22px;
+  background: #fff; border: 1.5px solid var(--gold); border-radius: 999px;
+  box-shadow: var(--shadow-sm); transition: box-shadow .3s var(--ease), border-color .3s;
+}
+.lang-switch:hover, .lang-switch:focus-within { box-shadow: var(--shadow); border-color: var(--gold-600); }
+.lang-switch label { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); margin: 0; color: var(--brand); font-size: 1.1rem; pointer-events: none; display: flex; }
+.lang-switch select {
+  appearance: none; -webkit-appearance: none; border: 0; background: transparent; cursor: pointer;
+  padding: 11px 44px 11px 46px; font: 600 .95rem var(--ff-body); color: var(--ink); min-width: 210px; border-radius: 999px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23167a3e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 6l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 16px center; background-size: 14px;
+}
+.lang-switch select:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+#rites .section-head > *, #rites .rite .col-lg-7 { transition: opacity .18s ease; }
+#rites.is-switching .section-head > *:not(.lang-switch), #rites.is-switching .rite .col-lg-7, #rites.is-switching .rite-num .lbl, #rites.is-switching .rite-num .nm { opacity: 0; }
+
+/* fonts + spacing per language (Cormorant has no Urdu/Hindi/Telugu glyphs) */
+#rites[data-lang="ur"] [lang="ur"], #rites[data-lang="ur"] [lang="ur"] * { font-family: "Noto Nastaliq Urdu", "Amiri", serif; }
+#rites[data-lang="hi"] [lang="hi"], #rites[data-lang="hi"] [lang="hi"] * { font-family: "Noto Sans Devanagari", sans-serif; }
+#rites[data-lang="te"] [lang="te"], #rites[data-lang="te"] [lang="te"] * { font-family: "Noto Sans Telugu", sans-serif; }
+#rites [lang="ar"] { font-family: var(--ff-arabic) !important; font-style: normal; font-size: 1.15em; }
+#rites[data-lang="ur"] [lang="ur"] { line-height: 2.1; }
+#rites[data-lang="ur"] .rite h3[dir], #rites[data-lang="ur"] .rite h3 { line-height: 1.7; font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
+#rites[data-lang="ur"] .section-title { line-height: 1.7; font-size: clamp(1.9rem, 3.4vw, 2.8rem); }
+#rites[data-lang="ur"] .lead-p, #rites[data-lang="ur"] .steps-list li { line-height: 2.2; }
+#rites[data-lang="hi"] [lang="hi"], #rites[data-lang="te"] [lang="te"] { line-height: 1.85; }
+#rites[data-lang="hi"] .rite h3, #rites[data-lang="te"] .rite h3 { font-weight: 700; font-size: clamp(1.6rem, 2.8vw, 2.2rem); line-height: 1.5; }
+#rites[data-lang="hi"] .section-title, #rites[data-lang="te"] .section-title { font-weight: 700; font-size: clamp(1.9rem, 3.4vw, 2.8rem); line-height: 1.5; }
+#rites[data-lang="hi"] .rite-num .nm, #rites[data-lang="te"] .rite-num .nm, #rites[data-lang="ur"] .rite-num .nm { font-size: 1.15rem; }
+#rites[data-lang] .rite-num .lbl { font-size: .95rem; }
+#rites .rite-num [dir="rtl"] { text-align: left; }
+#rites[data-lang="ur"] .rite-num .lbl, #rites[data-lang="ur"] .rite-num .nm { line-height: 1.9; }
+
+/* right-to-left layout for Urdu: mirror the numbered steps */
+#rites [dir="rtl"] .steps-list li { padding: 0 50px 18px 0; text-align: right; }
+#rites [dir="rtl"] .steps-list li::before { left: auto; right: 0; }
+#rites [dir="rtl"] .steps-list li::after { left: auto; right: 15.5px; }
+#rites [dir="rtl"] .lead-p, #rites [dir="rtl"] h3 { text-align: right; }
+
+/* polish for translated text */
+.lang-switch select { min-width: 230px; text-align-last: left; }
+#rites[data-lang="ur"] .lang-switch select, #rites[data-lang="hi"] .lang-switch select, #rites[data-lang="te"] .lang-switch select { min-width: 250px; }
+#rites[data-lang="ur"] .eyebrow, #rites[data-lang="hi"] .eyebrow, #rites[data-lang="te"] .eyebrow { letter-spacing: .04em; text-transform: none; font-size: .95rem; }
+#rites[data-lang="ur"] em { font-style: normal; }
+#rites[data-lang="ur"] .steps-list em, #rites[data-lang="ur"] .tip em { font-style: normal; }
+#rites[data-lang="hi"] em, #rites[data-lang="te"] em { font-style: normal; }
+#rites[data-lang="hi"] .rite h3 em, #rites[data-lang="te"] .rite h3 em, #rites[data-lang="hi"] .section-title em, #rites[data-lang="te"] .section-title em { font-weight: 700; }
