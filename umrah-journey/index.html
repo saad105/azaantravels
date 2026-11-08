@@ -141,14 +141,12 @@
           <span class="eyebrow center">Rites of Umrah</span>
           <h2 class="section-title">Four Rites, <em>One Sacred</em> Journey</h2>
           <p class="section-lead">Approach every step with sincerity, patience and remembrance of Allah, and seek His forgiveness throughout.</p>
-          <div class="lang-switch">
-            <label for="langSelect"><i class="bi bi-translate"></i><span class="visually-hidden">Language</span></label>
-            <select id="langSelect" aria-label="Choose language for the Rites of Umrah">
-              <option value="en" selected>English</option>
-              <option value="ur">اردو – Urdu</option>
-              <option value="hi">हिन्दी – Hindi</option>
-              <option value="te">తెలుగు – Telugu</option>
-            </select>
+          <div class="lang-switch" role="group" aria-label="Choose language for the Rites of Umrah">
+            <i class="bi bi-translate" aria-hidden="true"></i>
+            <button type="button" class="lang-btn is-active" data-lang="en" aria-pressed="true">English</button>
+            <button type="button" class="lang-btn" data-lang="ur" lang="ur" aria-pressed="false">اردو</button>
+            <button type="button" class="lang-btn" data-lang="hi" lang="hi" aria-pressed="false">हिन्दी</button>
+            <button type="button" class="lang-btn" data-lang="te" lang="te" aria-pressed="false">తెలుగు</button>
           </div>
         </div>
 

@@ -7,8 +7,9 @@
   'use strict';
 
   var root = document.getElementById('rites');
-  var select = document.getElementById('langSelect');
-  if (!root || !select) return;
+  var switcher = root && root.querySelector('.lang-switch');
+  if (!root || !switcher) return;
+  var buttons = switcher.querySelectorAll('.lang-btn');
 
   var T = {
     ur: {
@@ -208,7 +209,7 @@
   });
 
   var textCols = root.querySelectorAll('.rite .col-lg-7');
-  var headEls = root.querySelectorAll('.section-head > *');
+  var headEls = root.querySelectorAll('.section-head > *:not(.lang-switch)');
   var restNums = root.querySelectorAll('.rite-num .lbl, .rite-num .nm');
 
   function setDir(list, lang) {
@@ -231,9 +232,19 @@
     root.classList.remove('is-switching');
   }
 
-  select.addEventListener('change', function () {
-    var lang = select.value;
-    root.classList.add('is-switching');
-    setTimeout(function () { apply(lang); }, 180);
+  var current = 'en';
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var lang = btn.getAttribute('data-lang');
+      if (lang === current) return;
+      current = lang;
+      buttons.forEach(function (b) {
+        var on = b === btn;
+        b.classList.toggle('is-active', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      root.classList.add('is-switching');
+      setTimeout(function () { apply(lang); }, 180);
+    });
   });
 })();

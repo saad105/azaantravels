@@ -1248,3 +1248,25 @@ p { margin-bottom: 1rem; }
 #rites[data-lang="ur"] .steps-list em, #rites[data-lang="ur"] .tip em { font-style: normal; }
 #rites[data-lang="hi"] em, #rites[data-lang="te"] em { font-style: normal; }
 #rites[data-lang="hi"] .rite h3 em, #rites[data-lang="te"] .rite h3 em, #rites[data-lang="hi"] .section-title em, #rites[data-lang="te"] .section-title em { font-weight: 700; }
+
+/* language switcher as buttons (replaces the dropdown) */
+.lang-switch { gap: 4px; padding: 5px 6px 5px 14px; }
+.lang-switch > i { color: var(--brand); font-size: 1.1rem; margin-right: 6px; }
+.lang-btn {
+  border: 0; background: transparent; cursor: pointer; border-radius: 999px;
+  padding: 8px 18px; font: 600 .92rem var(--ff-body); color: var(--body); line-height: 1.4;
+  transition: background .3s var(--ease), color .3s var(--ease), box-shadow .3s var(--ease);
+}
+.lang-btn:hover { background: var(--brand-50); color: var(--brand-800); }
+.lang-btn.is-active { background: linear-gradient(135deg, var(--brand), var(--brand-800)); color: #fff; box-shadow: 0 8px 18px -8px rgba(22,122,62,.6); }
+.lang-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.lang-btn[lang="ur"] { font-family: "Noto Nastaliq Urdu", "Amiri", serif; font-size: 1rem; padding: 6px 18px 10px; }
+.lang-btn[lang="hi"] { font-family: "Noto Sans Devanagari", sans-serif; }
+.lang-btn[lang="te"] { font-family: "Noto Sans Telugu", sans-serif; }
+@media (max-width: 575.98px) { .lang-switch { flex-wrap: wrap; justify-content: center; border-radius: 22px; padding: 8px; } .lang-switch > i { display: none; } .lang-btn { padding: 8px 14px; } }
+
+/* language buttons: smooth colour change (solid fill, not a gradient) and equal heights in every language */
+.lang-btn { transition: background-color .3s var(--ease), color .3s var(--ease), box-shadow .3s var(--ease); }
+.lang-btn.is-active { background: var(--brand-800); }
+#rites .lang-switch .lang-btn { line-height: 1.4; }
+#rites .lang-switch .lang-btn[lang="ur"] { line-height: 1.7; padding-top: 4px; padding-bottom: 8px; }
